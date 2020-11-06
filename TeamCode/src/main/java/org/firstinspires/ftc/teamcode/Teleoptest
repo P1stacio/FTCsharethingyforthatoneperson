@@ -1,0 +1,24 @@
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+@TeleOp(name="Tankyboi")
+public class MyFirstOpMode extends OpMode {
+    DcMotor frontleft;
+    DcMotor frontright;
+    DcMotor backleft;
+    DcMotor backright;
+    public void init() {
+        frontleft = hardwareMap.dcMotor.get("FrontLeft");
+        frontright = hardwareMap.dcMotor.get("FrontRight");
+        backleft = hardwareMap.dcMotor.get("BackLeft");
+        backright = hardwareMap.dcMotor.get("BackRight");
+    }
+
+    public void loop() {
+        frontright.setPower(gamepad1.right_stick_y);
+        backright.setPower(gamepad1.right_stick_y);
+        frontleft.setPower(-gamepad1.left_stick_y);
+        backleft.setPower(-gamepad1.left_stick_y);
+    }
+}
